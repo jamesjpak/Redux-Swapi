@@ -16,11 +16,16 @@ export const getChar = () => dispatch => {
     axios
     .get(`https://swapi.co/api/people/`)
     .then(res => {
-        dispatch({ type: FETCH_CHAR_SUCCESS, payload: res.data })
+        console.log("from actions", res.data)
+        dispatch({ 
+            type: FETCH_CHAR_SUCCESS, 
+            payload: res.data.results })
     })
     .catch(err => {
-        dispatch({ type: FETCH_CHAR_FAILURE, payload: `${err.response.status}`)
-    })
+        dispatch({ 
+            type: FETCH_CHAR_FAILURE, 
+            payload: `${err.response.status}`})
+    });
 
 }
 
